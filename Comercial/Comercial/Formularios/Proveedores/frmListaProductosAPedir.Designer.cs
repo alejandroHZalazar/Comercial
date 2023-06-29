@@ -54,11 +54,11 @@
             // 
             this.dgvListaProdAPedir.AllowUserToAddRows = false;
             this.dgvListaProdAPedir.AllowUserToDeleteRows = false;
-            this.dgvListaProdAPedir.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvListaProdAPedir.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvListaProdAPedir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaProdAPedir.Location = new System.Drawing.Point(12, 84);
             this.dgvListaProdAPedir.Name = "dgvListaProdAPedir";
-            this.dgvListaProdAPedir.Size = new System.Drawing.Size(1160, 523);
+            this.dgvListaProdAPedir.Size = new System.Drawing.Size(1185, 523);
             this.dgvListaProdAPedir.TabIndex = 0;
             this.dgvListaProdAPedir.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProdAPedir_CellValueChanged);
             this.dgvListaProdAPedir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvListaProdAPedir_KeyPress);
@@ -124,7 +124,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(940, 620);
+            this.label4.Location = new System.Drawing.Point(970, 620);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 17);
             this.label4.TabIndex = 7;
@@ -133,7 +133,7 @@
             // txtCosto
             // 
             this.txtCosto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCosto.Location = new System.Drawing.Point(1067, 616);
+            this.txtCosto.Location = new System.Drawing.Point(1097, 616);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.ReadOnly = true;
             this.txtCosto.Size = new System.Drawing.Size(100, 25);
@@ -147,7 +147,7 @@
             this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCargar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.Image = global::Comercial.Properties.Resources.play_button;
-            this.btnCargar.Location = new System.Drawing.Point(1067, 653);
+            this.btnCargar.Location = new System.Drawing.Point(1097, 653);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(100, 23);
             this.btnCargar.TabIndex = 9;
@@ -230,7 +230,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1179, 689);
+            this.ClientSize = new System.Drawing.Size(1209, 689);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCargar);

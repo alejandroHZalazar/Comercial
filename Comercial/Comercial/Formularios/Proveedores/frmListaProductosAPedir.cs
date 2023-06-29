@@ -52,9 +52,9 @@ namespace Comercial.Formularios.Proveedores
             dgvListaProdAPedir.Columns["Descripcion"].ReadOnly = true;
             dgvListaProdAPedir.Columns["Stock"].ReadOnly = true;
             dgvListaProdAPedir.Columns["C_Min"].ReadOnly = true;
-            dgvListaProdAPedir.Columns["Costo"].ReadOnly = true;
-            dgvListaProdAPedir.Columns["P_Prov"].ReadOnly = true;
-            dgvListaProdAPedir.Columns["P_Lista"].ReadOnly = true;
+            dgvListaProdAPedir.Columns["Costo"].Visible = false;
+            dgvListaProdAPedir.Columns["P_Prov"].Visible = false;
+            dgvListaProdAPedir.Columns["P_Lista"].Visible = false;
             dgvListaProdAPedir.Columns["Prod"].Visible = false;
             dgvListaProdAPedir.Columns["codBarras"].Visible = false;
         }
