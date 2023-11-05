@@ -1,0 +1,15 @@
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\Business.dll.config
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\Business.dll
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\Business.pdb
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\EntityFramework.dll
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\Models.dll
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\Models.pdb
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\Models.dll.config
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\EntityFramework.xml
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\obj\Debug\Business.csprojAssemblyReference.cache
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\obj\Debug\Business.dll
+C:\Users\Alejandro\MisProyectosGit\EvoltisCrud\EvoltisTest\Business\obj\Debug\Business.pdb
