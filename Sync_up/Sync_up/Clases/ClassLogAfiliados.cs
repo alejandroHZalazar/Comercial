@@ -30,17 +30,19 @@ namespace Sync_up.Clases
             return t2;
         }
 
-        public string traerApiUltimoProcesado()
+        public string traerApiUltimoProcesado(string unModelo)
         {
             SqlCommand nComando = new SqlCommand("sp_ApiWeb_TraerUltimoProcesado", instCon.abrirConexion());
             nComando.CommandType = CommandType.StoredProcedure;
+
+            nComando.Parameters.AddWithValue("@modelo", unModelo);
 
             string valor = nComando.ExecuteScalar().ToString();
             instCon.cerrarConexion();
             return valor;
         }
 
-        public void UpdateUltimoProcesado(int unId)
+        public void UpdateUltimoProcesado(int unId, string unModelo)
         {
 
             SqlCommand sqlCm = new SqlCommand("sp_ApiWeb_UpdateUltimoProcesado", instCon.abrirConexion());
@@ -48,7 +50,8 @@ namespace Sync_up.Clases
 
 
             sqlCm.Parameters.AddWithValue("@id", unId);
-            
+            sqlCm.Parameters.AddWithValue("@modelo", unModelo);
+
             sqlCm.ExecuteNonQuery();
             instCon.cerrarConexion();
         }
@@ -95,33 +98,11 @@ namespace Sync_up.Clases
 
         public async Task GetWeb()
         {
-            StreamReader leer = new StreamReader((System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + @"\urlApi.env").Substring(6));
-            var url = "";
-            var auth = "";
-            int cont = 0;
-
-            while (!leer.EndOfStream)
-            {
-                cont++;
-                switch (cont)
-                {
-                    case 2:
-                        auth = leer.ReadLine();
-                        break;
-                    case 3:
-                        url = leer.ReadLine();
-                        break;                    
-                    default:
-                        leer.ReadLine();
-                        break;
-                }
-
-                
-            }
-
-            leer.Close();
-
-            url = url + "/" + traerApiUltimoProcesado();
+            ClassParameters InstParam = new ClassParameters();
+            string url = InstParam.traerRuta("afiliados");
+            string auth = InstParam.traerAutenticacion();
+            
+            url = url + "/" + traerApiUltimoProcesado("afiliados");
             JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             HttpClientHandler clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
@@ -170,29 +151,11 @@ namespace Sync_up.Clases
                                     bool unaBaja, string unaCalle, string unTelCelular, string unEmail, bool unAbusador, int unLogId)
 
         {
-            StreamReader leer = new StreamReader((System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + @"\urlApi.env").Substring(6));
-            var url = "";
-            var auth = "";
-            int cont = 0;
+            ClassParameters instParameteres = new ClassParameters();
+            
 
-            while (!leer.EndOfStream)
-            {
-                cont = cont + 1;
-                switch (cont)
-                {
-                    case 1:
-                        url = leer.ReadLine();
-                        break;
-                    case 2:
-                        auth = leer.ReadLine();
-                        break;
-                    default:
-                        leer.ReadLine();
-                        break;
-                }
-
-            }
-            leer.Close();
+            string url = instParameteres.traerRuta("afiliados");
+            string auth = instParameteres.traerAutenticacion();
 
             JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             HttpClientHandler clientHandler = new HttpClientHandler();
@@ -203,7 +166,7 @@ namespace Sync_up.Clases
             {
 
                 httpClient.DefaultRequestHeaders.Add("ContentType", "application/json");
-                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes("ale:1234");
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(auth);
                 string val = System.Convert.ToBase64String(plainTextBytes);
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
 
@@ -229,11 +192,11 @@ namespace Sync_up.Clases
                 if (response.IsSuccessStatusCode)
                 {
                     mark_processed(unLogId);
-                    Console.WriteLine(unNombre + " - Agregado");
+                    Console.WriteLine(unNombre + " - Afiliado Agregado");
                 }
                 else
                 {
-                    Console.WriteLine(unNombre + " - Error en Post. " + response.StatusCode  );
+                    Console.WriteLine(unNombre + " - Error en Post Afiliado. " + response.StatusCode  );
                 }
             }
         }
@@ -243,33 +206,16 @@ namespace Sync_up.Clases
                                     bool unaBaja, string unaCalle, string unTelCelular, string unEmail, bool unAbusador, int unLogId)
 
             {
-                StreamReader leer = new StreamReader((System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + @"\urlApi.env").Substring(6));
-                var url = "";
-                var auth = "";
-                int cont = 0;
+                ClassParameters instParameteres = new ClassParameters();
 
-                while (!leer.EndOfStream)
-                {
-                    cont = cont + 1;
-                    switch (cont)
-                    {
-                        case 1:
-                            url = leer.ReadLine();
-                            break;
-                        case 2:
-                            auth = leer.ReadLine();
-                            break;
-                        default:
-                        leer.ReadLine();
-                        break;
-                    }
 
-                }
-            leer.Close();
-            url = url + "/" + unId;
-                JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                HttpClientHandler clientHandler = new HttpClientHandler();
-                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+                string url = instParameteres.traerRuta("afiliados");
+                string auth = instParameteres.traerAutenticacion();
+
+                url = url + "/" + unId;
+                    JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    HttpClientHandler clientHandler = new HttpClientHandler();
+                    clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
 
                 using (var httpClient = new HttpClient(clientHandler))
@@ -302,11 +248,11 @@ namespace Sync_up.Clases
                     if (response.IsSuccessStatusCode)
                     {
                         mark_processed(unLogId);
-                        Console.WriteLine(unNombre + " - Actualizado");
+                        Console.WriteLine(unNombre + " - Afiliado Actualizado");
                     }
                     else
                     {
-                        Console.WriteLine(unNombre + " - Error en Update. " + response.StatusCode );
+                        Console.WriteLine(unNombre + " - Error en Update Afiliado. " + response.StatusCode );
                     }
 
                 }
@@ -318,29 +264,12 @@ namespace Sync_up.Clases
         public async Task DeleteProcess(long unId, string unNombre, int unIdLog)
 
         {
-            StreamReader leer = new StreamReader((System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + @"\urlApi.env").Substring(6));
-            var url = "";
-            var auth = "";
-            int cont = 0;
+            ClassParameters instParameteres = new ClassParameters();
 
-            while (!leer.EndOfStream)
-            {
-                cont = cont + 1;
-                switch (cont)
-                {
-                    case 1:
-                        url = leer.ReadLine();
-                        break;
-                    case 2:
-                        auth = leer.ReadLine();
-                        break;
-                    default:
-                        leer.ReadLine();
-                        break;
-                }
 
-            }
-            leer.Close();
+            string url = instParameteres.traerRuta("afiliados");
+            string auth = instParameteres.traerAutenticacion();
+
             url = url + "/" + unId;
             JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             HttpClientHandler clientHandler = new HttpClientHandler();
@@ -351,22 +280,20 @@ namespace Sync_up.Clases
             {
 
                 httpClient.DefaultRequestHeaders.Add("ContentType", "application/json");
-                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes("ale:1234");
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(auth);
                 string val = System.Convert.ToBase64String(plainTextBytes);
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
 
                 var response = await httpClient.DeleteAsync(url).ConfigureAwait(false);
 
-
-
                 if (response.IsSuccessStatusCode)
                 {
                     mark_processed(unIdLog);
-                    Console.WriteLine(unNombre + " - Eliminado");
+                    Console.WriteLine(unNombre + " - Afiliado Eliminado");
                 }
                 else
                 {
-                    Console.WriteLine(unNombre + " - Error en Delete. " + response.StatusCode);
+                    Console.WriteLine(unNombre + " - Error en Delete Afiliado. " + response.StatusCode);
                 }
 
             }

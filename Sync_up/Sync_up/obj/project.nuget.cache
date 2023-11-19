@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ogPkAPK16a8a4R2+GmOMx0waVhxTt4SkM1TOpL2oYsdSFoK/Une4eROtpXauiXXPZwlhdkaAGIzu5E3ct+9o4Q==",
+  "dgSpecHash": "v4eRAG/oYcvE9DvPiRVlhCDBsAPUaLzazyaNpPV7g5kcN2UClwUNd2mlfH2WxQn0P++D/LGRQT+PSmhQ1J0wKA==",
   "success": true,
-  "projectFilePath": "C:\\Cursos\\Consola\\Sync_up\\Sync_up\\Sync_up.csproj",
+  "projectFilePath": "C:\\Users\\Alejandro\\MisProyectosGit\\Sync_up\\Sync_up\\Sync_up.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alejandro\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Alejandro\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",

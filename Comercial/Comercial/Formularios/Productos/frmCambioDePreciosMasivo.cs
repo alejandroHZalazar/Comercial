@@ -60,27 +60,76 @@ namespace Comercial.Formularios.Productos
 
         private void LlenarGrid(string archivo, string hoja)
         {
-            OleDbConnection conexion = null;
-            DataSet dataSet = null;
-            OleDbDataAdapter dataAdapter = null;
-            string consultaHojaExcel = "select * from [" + hoja + "$]";
-
-            string cadenaConexionArchivoExcel = "provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + archivo + "';Extended Properties=Excel 12.0;";
-
-            if (string.IsNullOrEmpty(hoja))
+            try
             {
-                MessageBox.Show("No hay una hoja para leer");
+                OleDbConnection conexion = null;
+                DataSet dataSet = null;
+                OleDbDataAdapter dataAdapter = null;
+                string consultaHojaExcel = "select * from [" + hoja + "$]";
+
+                string cadenaConexionArchivoExcel = "provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + archivo + "';Extended Properties=Excel 12.0;";
+
+                if (string.IsNullOrEmpty(hoja))
+                {
+                    MessageBox.Show("No hay una hoja para leer");
+                }
+                else
+                {
+                    conexion = new OleDbConnection(cadenaConexionArchivoExcel);
+                    conexion.Open();
+                    dataAdapter = new OleDbDataAdapter(consultaHojaExcel, conexion);
+                    dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet, hoja);
+                    dgvProductos.DataSource = dataSet.Tables[0];
+                    conexion.Close();
+                    dgvProductos.AllowUserToAddRows = false;
+                }
             }
-            else
+            catch
             {
-                conexion = new OleDbConnection(cadenaConexionArchivoExcel);
-                conexion.Open();
-                dataAdapter = new OleDbDataAdapter(consultaHojaExcel, conexion);
-                dataSet = new DataSet();
-                dataAdapter.Fill(dataSet, hoja);
-                dgvProductos.DataSource = dataSet.Tables[0];
-                conexion.Close();
-                dgvProductos.AllowUserToAddRows = false;
+                OleDbConnection conexion = null;
+                DataSet dataSet = null;
+                OleDbDataAdapter dataAdapter = null;
+                string consultaHojaExcel = "select * from [" + hoja + "$]";
+
+                conexion = null;
+                dataSet = null;
+                dataAdapter = null;
+                consultaHojaExcel = "select * from [" + hoja + "$]";
+
+                string cadenaConexionArchivoExcel = "provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + archivo + "';Extended Properties=Excel 8.0;";
+
+                if (string.IsNullOrEmpty(hoja))
+                {
+                    MessageBox.Show("No hay una hoja para leer");
+                }
+                else
+                {
+                    conexion = new OleDbConnection(cadenaConexionArchivoExcel);
+                    conexion.Open();
+                    dataAdapter = new OleDbDataAdapter(consultaHojaExcel, conexion);
+                    dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet, hoja);
+                    dgvProductos.DataSource = dataSet.Tables[0];
+                    conexion.Close();
+                    dgvProductos.AllowUserToAddRows = false;
+                }
+
+                if (string.IsNullOrEmpty(hoja))
+                {
+                    MessageBox.Show("No hay una hoja para leer");
+                }
+                else
+                {
+                    conexion = new OleDbConnection(cadenaConexionArchivoExcel);
+                    conexion.Open();
+                    dataAdapter = new OleDbDataAdapter(consultaHojaExcel, conexion);
+                    dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet, hoja);
+                    dgvProductos.DataSource = dataSet.Tables[0];
+                    conexion.Close();
+                    dgvProductos.AllowUserToAddRows = false;
+                }
             }
         }
 

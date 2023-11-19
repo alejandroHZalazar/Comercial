@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Cursos\\Consola\\Sync_up\\Sync_up\\Sync_up.csproj": {}
+    "C:\\Users\\Alejandro\\MisProyectosGit\\Sync_up\\Sync_up\\Sync_up.csproj": {}
   },
   "projects": {
-    "C:\\Cursos\\Consola\\Sync_up\\Sync_up\\Sync_up.csproj": {
+    "C:\\Users\\Alejandro\\MisProyectosGit\\Sync_up\\Sync_up\\Sync_up.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Cursos\\Consola\\Sync_up\\Sync_up\\Sync_up.csproj",
+        "projectUniqueName": "C:\\Users\\Alejandro\\MisProyectosGit\\Sync_up\\Sync_up\\Sync_up.csproj",
         "projectName": "Sync_up",
-        "projectPath": "C:\\Cursos\\Consola\\Sync_up\\Sync_up\\Sync_up.csproj",
+        "projectPath": "C:\\Users\\Alejandro\\MisProyectosGit\\Sync_up\\Sync_up\\Sync_up.csproj",
         "packagesPath": "C:\\Users\\Alejandro\\.nuget\\packages\\",
-        "outputPath": "C:\\Cursos\\Consola\\Sync_up\\Sync_up\\obj\\",
+        "outputPath": "C:\\Users\\Alejandro\\MisProyectosGit\\Sync_up\\Sync_up\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alejandro\\AppData\\Roaming\\NuGet\\NuGet.Config",
