@@ -1,0 +1,69 @@
+CREATE PROCEDURE `sp_NotaABM` (in unId int, in unaCita int, in unaFechaNota datetime, in unDestinatario varchar(200), in unNroNota varchar(45),in unaAccion int, in unExpediente int, in unTipoCita int, in unUsuario int, in unaUnidad varchar(200), in movimientos varchar(1000), out salida int )
+BEGIN
+	declare unaCita int;
+	declare pos int;
+	declare elTipo int;
+	declare laFecha varchar(200);
+    
+    declare exit handler for sqlexception
+	begin
+    
+    set salida = -1;
+	rollback;
+end;
+start transaction;
+
+	DROP TABLE IF EXISTS temporal;
+	create temporary table temporal (tipo int, fechaMov datetime);
+
+	if unaAccion in (1,2) then
+		
+            
+		while movimientos <> "" do
+			select locate('!',movimientos) into pos;
+			select substring(movimientos,1,pos-1) into elTipo;
+            select substring(movimientos,pos+1,LENGTH(movimientos) - pos) into movimientos;
+            select locate('?',movimientos) into pos;
+            select substring(movimientos,1,pos-1) into laFecha;
+			insert into temporal (tipo,fechaMov) values (elTipo,laFecha);
+			select substring(movimientos,pos+1,LENGTH(movimientos) - pos) into movimientos;
+	
+
+		end while;
+	end if;
+
+	if unaAccion = 1 then
+		insert into citaciones (fk_expediente,fk_tipo,fk_usuario,fechaCarga)
+        values
+        (unExpediente,unTipoCita,unUsuario,now());
+		
+        insert into notas (fk_citacion, fechaNota,unidad,destinatario,nroNota)
+        values
+        ((select max(id) from citaciones),unaFechaNota,unaUnidad,unDestinatario,unNroNota);
+        
+        select max(id) from citaciones into unaCita;
+        
+        insert into motivosCitaciones (fk_cita,fk_tipoMov,fecha)
+        select unaCita,tipo,fechaMov from temporal;
+       
+       
+	elseif unaAccion = 2 then
+		update notas set fk_citacion = unaCitacion, fechaNota = unaFechaNota, unidad = unaUnidad, destinatario = unDestinatario, nroNota = unNroNota where id = unId;
+		update citaciones set fk_usuario = unUsuario, fechaCarga = now()  where id = unaCitacion;
+        
+        delete from motivosCitaciones where fk_cita = unaCitacion;
+        
+        insert into motivosCitaciones (fk_cita,fk_tipoMov,fecha)
+        select unaCitacion,tipo,fechaMov from temporal;
+        set unaCita = unaCitacion;
+    else 
+    delete from notas where id = unId;
+        delete from citaciones where id = unaCitacion;
+        delete from motivosCitaciones where fk_cita = unaCitacion;
+        set unaCita = unaCitacion;
+    end if;
+    
+     commit;
+    
+    set salida = unaCita;
+END
