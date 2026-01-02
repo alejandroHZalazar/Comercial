@@ -234,3 +234,5 @@ C:\Desarrollos\Comercial-master\Comercial\Comercial\bin\Debug\Microsoft.ReportVi
 C:\Desarrollos\Comercial-master\Comercial\Comercial\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
 C:\Desarrollos\Comercial-master\Comercial\Comercial\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
 C:\Desarrollos\Comercial-master\Comercial\Comercial\obj\Debug\Comercial.csproj.AssemblyReference.cache
+C:\Desarrollos\Comercial-master\Comercial\Comercial\obj\Debug\RdlCompile.cache
+C:\Desarrollos\Comercial-master\Comercial\Comercial\obj\Debug\RdlCompile.compiled
